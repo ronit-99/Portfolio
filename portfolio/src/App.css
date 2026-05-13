@@ -1,0 +1,71 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal {
+  animation: reveal-up 760ms ease both;
+}
+
+.reveal-card {
+  animation: reveal-up 680ms ease both;
+}
+
+.delay-2 {
+  animation-delay: 160ms;
+}
+
+.photo-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.photo-stage::before {
+  content: '';
+  position: absolute;
+  inset: 26px 122px -10px;
+  z-index: 0;
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.28), rgba(59, 130, 246, 0.2)),
+    repeating-linear-gradient(135deg, rgba(15, 23, 42, 0.12) 0 1px, transparent 1px 16px);
+  transform: rotate(-3deg);
+}
+
+.photo-stage::after {
+  content: '';
+  position: absolute;
+  inset: 8px 138px 14px;
+  z-index: -1;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  transform: rotate(3deg);
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-card {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
